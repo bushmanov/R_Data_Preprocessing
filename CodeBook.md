@@ -1,7 +1,10 @@
 ---
 title: "CodeBook"
+author: "Sergey Bushmanov"
+date: "07/24/2014"
 output: html_document
 ---
+
 CodeBook
 ========
 
@@ -10,12 +13,14 @@ This CodeBook.md file is intended to provide:
 
 * structure of the meanTidyData.txt file  
 
-* definitions of the varibles recorded
+* definitions of the variables recorded
 
-* general description of steps that resulted in meanTidyData.txt
+* summary of data processing design
 
-The meanTidyData.txt file contains **averages** of means and stanfard deviations 
-of measurements coming from accelerator and gyroscope attached to 30 anonymouos 
+* summary choices
+
+The meanTidyData.txt file contains **averages** of means and standard deviations 
+of measurements coming from accelerator and gyroscope attached to 30 anonymous 
 individuals. The measurements were performed while individuals undertook 6 types of
 activities. The data is organized into 181 rows and 68 white space separated columns.
 
@@ -42,7 +47,7 @@ Range: 1, 30
 
 Type of variable("class"): "integer"
 
-* 2-nd column, "activity" variable: descriptive names of activiies performed, while 
+* 2-nd column, "activity" variable: descriptive names of activities performed, while 
 recording gyroscope and accelerator measurements  
 
 Range: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING  
@@ -50,7 +55,7 @@ Range: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING
 Type of variable ("class"): "character"
 
 * 3rd - 68th columns are calculated averages (means) of standard deviations
-and means of gyrosocpe and accelerator measurements
+and means of gyroscope and accelerator measurements
 
 Variable names:
 
@@ -107,26 +112,42 @@ velocity
 * XYZ stand for the names of euclidean coordinate projections
 
 * suffixes "mean" and "std" denote mean and standard deviations of the measured
-series over wich averaging was performed
+series over which averaging was performed
 
 Range: variables are normalized and scaled within [-1,1]
 
 
-Summary of data processing that leads to meanTidyData.txt
-==========================================================
+Summary of data processing design that leads to meanTidyData.txt
+================================================================
 
 The resulting data presented is obtained via combining and summarizing raw data 
 that can be obtained at the time of this report at:
 
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-In general, after downloading data, the steps to obtain meanTidyData.txt were as follows:
+In general, after downloading data, the steps to obtain meanTidyData.txt are as follows:
 
-1. Step 1. Combine train and test data sets.
-2. Step 2. Only extract means and standard deviations of measurements.
-3. Step 3. Substitute activity id's with their descirptive labels.
-4. Step 4. Give descriptive, valid labels to measurement variables and export file.
+* Step 1. Combine train and test data sets.
+
+* Step 2. Only extract means and standard deviations of measurements.
+
+* Step 3. Substitute activity id's with their descriptive labels.
+
+* Step 4. Give descriptive, valid labels to measurement variables and export file.
+
+* Step 5. Average extracted measures over each activity for each subject.
 
 More detailed explanation of the process is given in the README.md file found at
 https://github.com/sbushmanov/GnCD_Course_Project
 
+Summary choices:
+==================
+
+* Only 66 varibles with 33 mean() and 33 std() in their names entered the final 
+dataset of calculated averages. Variables whose name contained other forms of mean, 
+e.g meanFreq, are not considerd a "true" mean (they are part of frequency domain 
+filtering).
+
+* Filtering for invalid characters in variable names was performed with
+make.names() R function. Resulting variable names were further processed
+by substituting recurring strings "BodyBody", "...", and ".." for "Body" and ".".

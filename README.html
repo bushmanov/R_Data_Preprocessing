@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>README.md</title>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>README.md</h1>
+
+<p>This README.md is to:</p>
+
+<ul>
+<li><p>briefly explain the purpose and background of this data cleaning project</p></li>
+<li><p>provide description of working directory file structure</p></li>
+<li><p>state naming conventions</p></li>
+<li><p>describe how the run_analysis.R script works</p></li>
+<li><p>credit source of the original data</p></li>
+</ul>
+
+<h2>Project purpose and background</h2>
+
+<p>The original data collection was performed by recording accelerator and gyroscope mesurements from 30 individuals while they were performing 6 types of physical 
+activities. The goal of this project is to combine and summarize data in a format
+suitable for further analysis. More specifically, a <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data</a> set of averages of means and standard deviations 
+of measurements in .txt format should be generated.</p>
+
+<h2>File structure  </h2>
+
+<p>In order to execute run_analysis.R script, zipped raw data should be downloaded from</p>
+
+<p><a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a></p>
+
+<p>After the file has been downloaded to the working directory of R and unzipped,
+folder &ldquo;UCI HAR Dataset&rdquo; to be renamed to &ldquo;data&rdquo; to eliminate spaces in the 
+file path.</p>
+
+<p>After performing these preparation steps the working directory <strong>must</strong> have the
+following files to ensure successful running of run_analysis.R script:</p>
+
+<ul>
+<li><p>&ldquo;./run_analysis.R&rdquo; - R script to perform analysis.</p></li>
+<li><p>&ldquo;./data/train/X_train.txt&rdquo;  and  &ldquo;./data/test/X_test.txt&rdquo; - train and
+test measurement data to be combined</p></li>
+<li><p>&ldquo;./data/train/subject_train.txt&rdquo; and &ldquo;./data/test/subject_test.txt&rdquo; - subject
+id&#39;s for train and test data accordingly.</p></li>
+<li><p>&ldquo;./data/train/y_train.txt&rdquo; and &ldquo;./data/test/y_test.txt&rdquo; - activity id for
+train and test data accordingly</p></li>
+<li><p>&ldquo;./data/activity_labels.txt&rdquo; - file matching activity labels and activity id&#39;s</p></li>
+<li><p>&ldquo;./data/features.txt&rdquo; - file containing measurement names</p></li>
+</ul>
+
+<p>No other files are necessary for executing run_analysis.R script.</p>
+
+<p>Files that are not necessary for executing script but critical to understanding
+the nature of resulting variables:</p>
+
+<ul>
+<li>&ldquo;./CodeBook.md&rdquo; - definitions of variables in resulting meanTidyData.txt, data formats, ranges, as well as summary choices made during data processing.</li>
+</ul>
+
+<p>Optional files to peruse:</p>
+
+<ul>
+<li>&ldquo;./data/README.txt&rdquo; - detailed explanation of how raw data was recorded, processed,
+and packed into zipped downloaded file from the source of raw data.</li>
+</ul>
+
+<p>What you got after executing the script:</p>
+
+<ul>
+<li>&ldquo;./meanTidyData.txt&rdquo; - resulting tidy data set</li>
+</ul>
+
+<h2>Naming conventions</h2>
+
+<p>Variables used in the analysis are named according to 
+<a href="http://en.wikipedia.org/wiki/CamelCase">camelCase</a> convention, 
+i.e. each next word in a variable name starts with a capital letter.</p>
+
+<h2>How the run_analysis.R script works</h2>
+
+<p>There are five steps in the run_analysis.R script to perform sequentially 
+to arrive from input files to resulting meanTidyData.txt</p>
+
+<ul>
+<li><p>Step 1. Merge the training and the test sets to create one data set:</p>
+
+<ul>
+<li>Read measurement train data</li>
+<li>Read and append to the left train subject id and train activity id</li>
+<li>Read measurement test data</li>
+<li>Read and append to the left test subject id and test activity id</li>
+<li>Combine resulting train and test data to obtain <code>mergedData</code> R object</li>
+</ul></li>
+<li><p>Step 2. Extract only the measurements on the mean and standard deviation 
+for each measurement</p>
+
+<ul>
+<li>Read measure names</li>
+<li>Find positions (via grep) of only those containing &ldquo;mean()&rdquo; and &ldquo;std()&rdquo;.
+Disregard others containing &ldquo;mean&rdquo; in other forms, e.g. &ldquo;meanFreq&rdquo;, as not being
+&ldquo;true&rdquo; means.</li>
+<li>Extract columns for positions found, plus two first columns forsubject and 
+individual ids.</li>
+<li>Result of Step 2 is <code>extractedData</code> R object only containing id&#39;s for
+individuals and activities, and means and standard deviations.</li>
+</ul></li>
+<li><p>Step 3. Use descriptive activity names to name the activities in the data set.</p>
+
+<ul>
+<li>Read descriptive activity names into object of class Data Frame</li>
+<li>Use ids from this file as levels, and activity labels as labels to
+factorize <code>extactedData[, 2]</code>, that represented activity id&#39;s.</li>
+<li>Resulting <code>extractedDataDescriptive</code> will present activities with
+a descriptive label.</li>
+</ul></li>
+<li><p>Step 4. Label the data set with descriptive variable names. In the context 
+of this project, a name considered descriptive if it provides
+some insight into what the variable stand for, as opposed to V1, V2 e.g. As such,
+<code>fBodyGyroJerkMag.mean.</code> considered descriptive (see CodeBook.md for meaning).
+Otherwise, names could be too lengthy.</p>
+
+<ul>
+<li>Make vector <code>namesExtracted</code> of all names of means and standard deviations extracted<br/></li>
+<li>Make vector of valid R names with the help of <code>make.names()</code> R function<br/></li>
+<li>Clean resulting vector of artifacts like <code>&quot;BodyBody&quot;</code>, <code>&quot;...&quot;</code> and <code>&quot;..&quot;</code><br/></li>
+<li>Append <code>c(&quot;subject&quot;, &quot;activity&quot;)</code> to the left and name <code>extractedDataDescriptive</code>
+with resulting vector of names.</li>
+</ul></li>
+<li><p>Step 5. Average of each variable for each activity and each subject.</p>
+
+<ul>
+<li>Aggregate data by subject and activity and calculate means. Resulting
+<code>meanTidyData</code> considered <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy</a> because<br/>
+
+<ul>
+<li>the whole table only contains data of similar type (averages)</li>
+<li>one observation for every row</li>
+<li>one variable for every column</li>
+</ul></li>
+<li>Write <code>meanTidyData</code> to <code>meanTidyData.txt</code></li>
+</ul></li>
+</ul>
+
+<h2>Credit for original data:</h2>
+
+<p>Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. 
+Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly 
+Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). 
+Vitoria-Gasteiz, Spain. Dec 2012</p>
+
+</body>
+
+</html>

@@ -155,12 +155,13 @@ hr {
 
 <ul>
 <li><p>structure of the meanTidyData.txt file  </p></li>
-<li><p>definitions of the varibles recorded</p></li>
-<li><p>general description of steps that resulted in meanTidyData.txt</p></li>
+<li><p>definitions of the variables recorded</p></li>
+<li><p>summary of data processing design</p></li>
+<li><p>summary choices</p></li>
 </ul>
 
-<p>The meanTidyData.txt file contains <strong>averages</strong> of means and stanfard deviations 
-of measurements coming from accelerator and gyroscope attached to 30 anonymouos 
+<p>The meanTidyData.txt file contains <strong>averages</strong> of means and standard deviations 
+of measurements coming from accelerator and gyroscope attached to 30 anonymous 
 individuals. The measurements were performed while individuals undertook 6 types of
 activities. The data is organized into 181 rows and 68 white space separated columns.</p>
 
@@ -187,7 +188,7 @@ obtained for each subject and each activity (30 individuals multiplied by 6 acti
 <p>Type of variable(&ldquo;class&rdquo;): &ldquo;integer&rdquo;</p>
 
 <ul>
-<li>2-nd column, &ldquo;activity&rdquo; variable: descriptive names of activiies performed, while 
+<li>2-nd column, &ldquo;activity&rdquo; variable: descriptive names of activities performed, while 
 recording gyroscope and accelerator measurements<br/></li>
 </ul>
 
@@ -197,7 +198,7 @@ recording gyroscope and accelerator measurements<br/></li>
 
 <ul>
 <li>3rd - 68th columns are calculated averages (means) of standard deviations
-and means of gyrosocpe and accelerator measurements</li>
+and means of gyroscope and accelerator measurements</li>
 </ul>
 
 <p>Variable names:</p>
@@ -249,29 +250,42 @@ velocity</p></li>
 <li><p>&ldquo;Mag&rdquo; stands for signal magnitude</p></li>
 <li><p>XYZ stand for the names of euclidean coordinate projections</p></li>
 <li><p>suffixes &ldquo;mean&rdquo; and &ldquo;std&rdquo; denote mean and standard deviations of the measured
-series over wich averaging was performed</p></li>
+series over which averaging was performed</p></li>
 </ul>
 
 <p>Range: variables are normalized and scaled within [-1,1]</p>
 
-<h1>Summary of data processing that leads to meanTidyData.txt</h1>
+<h1>Summary of data processing design that leads to meanTidyData.txt</h1>
 
 <p>The resulting data presented is obtained via combining and summarizing raw data 
 that can be obtained at the time of this report at:</p>
 
 <p><a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a></p>
 
-<p>In general, after downloading data, the steps to obtain meanTidyData.txt were as follows:</p>
+<p>In general, after downloading data, the steps to obtain meanTidyData.txt are as follows:</p>
 
-<ol>
-<li>Step 1. Combine train and test data sets.</li>
-<li>Step 2. Only extract means and standard deviations of measurements.</li>
-<li>Step 3. Substitute activity id&#39;s with their descirptive labels.</li>
-<li>Step 4. Give descriptive, valid labels to measurement variables and export file.</li>
-</ol>
+<ul>
+<li><p>Step 1. Combine train and test data sets.</p></li>
+<li><p>Step 2. Only extract means and standard deviations of measurements.</p></li>
+<li><p>Step 3. Substitute activity id&#39;s with their descriptive labels.</p></li>
+<li><p>Step 4. Give descriptive, valid labels to measurement variables and export file.</p></li>
+<li><p>Step 5. Average extracted measures over each activity for each subject.</p></li>
+</ul>
 
 <p>More detailed explanation of the process is given in the README.md file found at
 <a href="https://github.com/sbushmanov/GnCD_Course_Project">https://github.com/sbushmanov/GnCD_Course_Project</a></p>
+
+<h1>Summary choices:</h1>
+
+<ul>
+<li><p>Only 66 varibles with 33 mean() and 33 std() in their names entered the final 
+dataset of calculated averages. Variables whose name contained other forms of mean, 
+e.g meanFreq, are not considerd a &ldquo;true&rdquo; mean (they are part of frequency domain 
+filtering).</p></li>
+<li><p>Filtering for invalid characters in variable names was performed with
+make.names() R function. Resulting variable names were further processed
+by substituting recurring strings &ldquo;BodyBody&rdquo;, &ldquo;&hellip;&rdquo;, and &ldquo;..&rdquo; for &ldquo;Body&rdquo; and &ldquo;.&rdquo;.</p></li>
+</ul>
 
 </body>
 
